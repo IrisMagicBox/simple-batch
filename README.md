@@ -33,7 +33,7 @@ cd simple-batch
 ```
 
 #### 方法二：下载ZIP
-1. 访问 [GitHub Releases](https://github.com/IrisMagicBox/simple-batch/releases)
+1. 访问 [GitHub](https://github.com/IrisMagicBox/simple-batch)
 2. 下载最新版本的ZIP文件
 3. 解压到本地目录
 
@@ -126,7 +126,7 @@ REQUEST_CACHE_FLUSH_INTERVAL = 5   # 定时写入间隔(秒)
 
 - 🔑 **API密钥**：输入您的API密钥
 - 🌐 **API基础URL**：API服务地址
-- 🤖 **模型名称**：如 `gpt-4`、`gpt-3.5-turbo` 等
+- 🤖 **模型名称**：如 `DeepSeek-V3.1`、`gpt-5` 等
 - ⚙️ **参数设置**：
   - 温度 (Temperature)
   - 最大Token数 (Max Tokens)
@@ -137,7 +137,7 @@ REQUEST_CACHE_FLUSH_INTERVAL = 5   # 定时写入间隔(秒)
 1. 📤 上传JSON格式的请求数据文件
 2. ⚙️ 选择API配置
 3. 🎛️ 设置处理参数：
-   - 并发数 (建议5-20)
+   - 并发数 (建议<200)
    - 失败重试次数
    - 请求间隔(秒)
 4. 🚀 提交作业
@@ -147,7 +147,6 @@ REQUEST_CACHE_FLUSH_INTERVAL = 5   # 定时写入间隔(秒)
 - 📊 **仪表盘**：实时显示处理进度
 - 📋 **作业列表**：查看所有作业状态
 - 📈 **统计图表**：
-  - 请求成功率
   - 平均响应时间
   - Token使用量
 - 📝 **日志**：详细的执行日志
@@ -157,9 +156,7 @@ REQUEST_CACHE_FLUSH_INTERVAL = 5   # 定时写入间隔(秒)
 - 💾 **导出格式**：JSON
 - 📦 **导出内容**：
   - 完整的请求/响应数据
-  - 处理状态
-  - 执行时间
-  - 错误信息(如果有)
+
 
 ## 📝 API 请求格式
 
@@ -167,44 +164,10 @@ REQUEST_CACHE_FLUSH_INTERVAL = 5   # 定时写入间隔(秒)
 
 ```json
 [
-  {
-    "messages": [
-      {
-        "role": "system",
-        "content": "You are a helpful assistant."
-      },
-      {
-        "role": "user",
-        "content": "Hello!"
-      }
-    ],
-    "temperature": 0.7,
-    "max_tokens": 1000
-  },
-  {
-    "messages": [
-      {
-        "role": "user",
-        "content": "What is Python?"
-      }
-    ],
-    "temperature": 0.5,
-    "max_tokens": 500
-  }
+    [{"role": "user", "content": "Hello"}],
+    [{"role": "system", "content": "You are a helpful assistant"}, {"role": "user", "content": "What is AI?"}]
 ]
 ```
-
-### 字段说明
-
-| 字段 | 类型 | 必填 | 说明 |
-|------|------|------|------|
-| `messages` | Array | 是 | 消息数组，包含对话历史 |
-| `temperature` | Float | 否 | 生成文本的随机性(0-2) |
-| `max_tokens` | Integer | 否 | 生成的最大token数 |
-| `top_p` | Float | 否 | 核采样参数 |
-| `n` | Integer | 否 | 每个输入生成多少个结果 |
-
-> 💡 提示：所有OpenAI兼容参数都支持，具体请参考[OpenAI API文档](https://platform.openai.com/docs/api-reference/chat/create)
 
 ## 🛠️ 故障排除
 

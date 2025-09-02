@@ -1,70 +1,80 @@
-# Simple Batch - AI API批处理程序
+<div align="center">
 
-一个高效的AI API批处理处理程序，支持OpenAI兼容接口的批量请求处理，具备Web UI界面管理、实时监控和性能统计功能。
+# 🚀 Simple Batch - AI API 批处理工具
 
-## 🌟 主要功能
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-- **批处理管理**: 支持大规模API请求的批处理执行
-- **多API配置**: 管理多个AI API配置，支持不同模型和参数
-- **并发控制**: 可配置并发数，提升batch效率
-- **智能重试**: 失败请求自动重试机制
-- **实时监控**: Web界面实时显示处理进度和状态
-- **性能统计**: 响应时间、成本分析、请求图表等统计
-- **数据导出**: 支持结果导出
-- **错误日志**: 详细的错误记录和分析
+一个高效的AI API批处理工具，支持OpenAI兼容接口的批量请求处理，提供直观的Web界面进行任务管理和实时监控。
+
+</div>
+
+## ✨ 主要功能
+
+| 功能 | 描述 |
+|------|------|
+| 🚀 **批处理管理** | 支持大规模API请求的批处理执行 |
+| 🔄 **多API配置** | 管理多个AI API配置，支持不同模型和参数 |
+| ⚡ **并发控制** | 可配置并发数，提升处理效率 |
+| 🔄 **智能重试** | 失败请求自动重试机制 |
+| 📊 **实时监控** | Web界面实时显示处理进度和状态 |
+| 📈 **性能统计** | 响应时间、成本分析、请求图表等统计 |
+| 💾 **数据导出** | 支持结果导出为JSON格式 |
+| 🐞 **错误日志** | 详细的错误记录和分析 |
 
 ## 🚀 快速开始
 
-### 从GitHub获取项目
+### 1. 获取项目代码
 
 #### 方法一：Git克隆（推荐）
 ```bash
-# 克隆项目
 git clone https://github.com/IrisMagicBox/simple-batch.git
+cd simple-batch
 ```
 
 #### 方法二：下载ZIP
-1. 访问项目GitHub页面
-2. 点击绿色的 "Code" 按钮
-3. 选择 "Download ZIP"
-4. 解压到本地目录
+1. 访问 [GitHub Releases](https://github.com/IrisMagicBox/simple-batch/releases)
+2. 下载最新版本的ZIP文件
+3. 解压到本地目录
 
-### 安装与配置
+### 2. 环境准备
 
-#### 1. 系统要求
-- Python 3.8+
-- 操作系统: Windows / macOS / Linux
+#### 系统要求
+- 🐍 Python 3.8+
+- 💻 操作系统: Windows / macOS / Linux
+- 🛠️ 建议使用虚拟环境
 
-#### 2. 创建虚拟环境（推荐）
+#### 创建并激活虚拟环境
 ```bash
 # 创建虚拟环境
 python -m venv venv
 
 # 激活虚拟环境
 # Windows
-venv\Scripts\activate
+.\venv\Scripts\activate
 
 # macOS/Linux
 source venv/bin/activate
 ```
 
-#### 3. 安装依赖
+### 3. 安装依赖
 ```bash
+# 使用默认源
 pip install -r requirements.txt
-```
-或者使用清华源安装
-```bash
+
+# 或使用清华源加速
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-### 启动应用
-
+### 4. 启动应用
 ```bash
-# 启动应用
-python main.py
+python main.py  # 默认端口7861
+
+# 自定义端口和主机
+# python main.py --port 8080 --host 0.0.0.0
 ```
 
-启动成功后，将在控制台看到类似输出：
+🖥️ **启动成功后**，控制台会显示：
 ```
 2024-09-02 10:00:00 - main - INFO - 数据库初始化完成
 2024-09-02 10:00:00 - main - INFO - 调度器已启动
@@ -72,97 +82,202 @@ python main.py
 Running on local URL:  http://127.0.0.1:7861
 ```
 
-在浏览器中访问 http://127.0.0.1:7861 即可使用Web界面。
-
-同样可以指定--port和--host自定义启动端口和地址。
+🌐 打开浏览器访问 [http://127.0.0.1:7861](http://127.0.0.1:7861) 开始使用。
 
 
 
-## 🔧 配置说明
+## ⚙️ 配置说明
 
-### 主要配置项 (settings.py)
+主要配置文件位于 `settings.py`，以下是关键配置项：
 
+### 数据库配置
 ```python
-# 数据库配置
+# SQLite 数据库文件路径
 DATABASE_URL = "batch_processor.db"
-
-# API配置默认值
-DEFAULT_MAX_TOKENS = 4096
-DEFAULT_TEMPERATURE = 0.7
-DEFAULT_TIMEOUT = 60
-
-# 批处理默认值
-DEFAULT_CONCURRENCY = 5      # 默认并发数
-DEFAULT_MAX_RETRIES = 3      # 默认重试次数
-
-# 缓存配置
-REQUEST_CACHE_BATCH_SIZE = 100        # 批量落库阈值
-REQUEST_CACHE_FLUSH_INTERVAL = 5      # 定时刷写间隔(秒)
 ```
 
-## 📖 使用指南
+### API 默认参数
+```python
+DEFAULT_MAX_TOKENS = 4096     # 默认最大token数
+DEFAULT_TEMPERATURE = 0.7     # 默认温度参数
+DEFAULT_TIMEOUT = 60          # 默认请求超时(秒)
+```
+
+### 批处理设置
+```python
+DEFAULT_CONCURRENCY = 5       # 默认并发数
+DEFAULT_MAX_RETRIES = 3       # 失败请求重试次数
+```
+
+### 性能优化
+```python
+# 缓存设置
+REQUEST_CACHE_BATCH_SIZE = 100     # 批量写入数据库的请求数
+REQUEST_CACHE_FLUSH_INTERVAL = 5   # 定时写入间隔(秒)
+```
+
+> 💡 提示：修改配置后需要重启应用生效
+
+## 📚 使用指南
 
 ### 1. 配置API信息
+
 在Web界面中添加AI API配置：
-- API密钥 (API Key)
-- API基础URL (API Base URL)  
-- 模型名称 (Model Name)
-- 参数设置 (温度、最大Token数等)
+
+- 🔑 **API密钥**：输入您的API密钥
+- 🌐 **API基础URL**：API服务地址
+- 🤖 **模型名称**：如 `gpt-4`、`gpt-3.5-turbo` 等
+- ⚙️ **参数设置**：
+  - 温度 (Temperature)
+  - 最大Token数 (Max Tokens)
+  - 超时时间 (Timeout)
 
 ### 2. 创建批处理作业
-- 上传包含请求数据的JSON文件
-- 选择API配置
-- 设置并发数和重试次数
-- 启动作业
+
+1. 📤 上传JSON格式的请求数据文件
+2. ⚙️ 选择API配置
+3. 🎛️ 设置处理参数：
+   - 并发数 (建议5-20)
+   - 失败重试次数
+   - 请求间隔(秒)
+4. 🚀 提交作业
 
 ### 3. 监控进度
-- 查看作业状态
-- 监控成功/失败请求数
-- 查看性能统计图表
-- 检查错误日志
+
+- 📊 **仪表盘**：实时显示处理进度
+- 📋 **作业列表**：查看所有作业状态
+- 📈 **统计图表**：
+  - 请求成功率
+  - 平均响应时间
+  - Token使用量
+- 📝 **日志**：详细的执行日志
 
 ### 4. 导出结果
-- 支持JSON格式导出
-- 包含详细的响应数据和统计信息
 
-## 📝 API请求格式
+- 💾 **导出格式**：JSON
+- 📦 **导出内容**：
+  - 完整的请求/响应数据
+  - 处理状态
+  - 执行时间
+  - 错误信息(如果有)
 
-批处理请求文件应为JSON格式，包含请求数组：
+## 📝 API 请求格式
+
+批处理请求文件应为JSON格式，包含一个请求数组。每个请求对象的结构如下：
 
 ```json
 [
   {
     "messages": [
-      {"role": "system", "content": "You are a helpful assistant."},
-      {"role": "user", "content": "Hello!"}
-    ]
+      {
+        "role": "system",
+        "content": "You are a helpful assistant."
+      },
+      {
+        "role": "user",
+        "content": "Hello!"
+      }
+    ],
+    "temperature": 0.7,
+    "max_tokens": 1000
   },
   {
     "messages": [
-      {"role": "user", "content": "What is Python?"}
-    ]
+      {
+        "role": "user",
+        "content": "What is Python?"
+      }
+    ],
+    "temperature": 0.5,
+    "max_tokens": 500
   }
 ]
 ```
 
-## 🔍 故障排除
+### 字段说明
+
+| 字段 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| `messages` | Array | 是 | 消息数组，包含对话历史 |
+| `temperature` | Float | 否 | 生成文本的随机性(0-2) |
+| `max_tokens` | Integer | 否 | 生成的最大token数 |
+| `top_p` | Float | 否 | 核采样参数 |
+| `n` | Integer | 否 | 每个输入生成多少个结果 |
+
+> 💡 提示：所有OpenAI兼容参数都支持，具体请参考[OpenAI API文档](https://platform.openai.com/docs/api-reference/chat/create)
+
+## 🛠️ 故障排除
 
 ### 常见问题
 
-1. **端口占用**: 如果7861端口被占用，可在 `main.py` 中修改端口号
-2. **权限问题**: 确保对项目目录有读写权限
-3. **依赖冲突**: 建议使用虚拟环境安装依赖
-4. **数据库问题**: 删除 `batch_processor.db` 文件重新初始化，删除前数据库若存在可用数据，可先导出后再删除
+<details>
+<summary>🔴 端口被占用</summary>
 
-### 日志文件
-查看 `logs/` 目录下的日志文件获取详细错误信息。
+```bash
+# 指定其他端口
+python main.py --port 8080
 
-## 🤝 贡献
+# 或查找并终止占用端口的进程
+# Linux/macOS
+lsof -i :7861
+kill -9 <PID>
 
-欢迎提交Issues和Pull Requests来改进项目！
+# Windows
+netstat -ano | findstr :7861
+taskkill /PID <PID> /F
+```
+</details>
+
+<details>
+<summary>🔐 权限问题</summary>
+
+```bash
+# 确保对项目目录有读写权限
+chmod -R 755 /path/to/simple-batch
+```
+</details>
+
+<details>
+<summary>🐍 依赖冲突</summary>
+
+```bash
+# 创建新的虚拟环境
+python -m venv new_venv
+source new_venv/bin/activate  # 或 new_venv\Scripts\activate
+pip install -r requirements.txt
+```
+</details>
+
+<details>
+<summary>💾 数据库问题</summary>
+
+```bash
+# 备份当前数据库
+cp batch_processor.db batch_processor.db.bak
+
+# 删除并重新初始化数据库
+rm batch_processor.db
+```
+</details>
+
+### 获取帮助
+
+- 📂 查看 `logs/` 目录下的日志文件
+- 📝 在 [GitHub Issues](https://github.com/IrisMagicBox/simple-batch/issues) 搜索或提交问题
+
+## 🤝 参与贡献
+
+欢迎任何形式的贡献！
+
+1. 🐛 提交 Bug 报告
+2. 💡 提出新功能建议
+3. 📝 改进文档
+4. 💻 提交代码 (Pull Request)
 
 ## 📄 许可证
 
-本项目采用 GNU Affero General Public License v3.0 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+[![AGPL-3.0 License](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-**注意**: 使用前请确保遵守相关AI API服务商的使用条款和限制。
+本项目采用 **GNU Affero General Public License v3.0** 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+> ⚠️ **注意**：使用本工具时，请确保遵守相关AI API服务商的使用条款和限制。

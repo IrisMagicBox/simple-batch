@@ -11,16 +11,14 @@
 
 ## ✨ 主要功能
 
-| 功能 | 描述 |
-|------|------|
-| 🚀 **批处理管理** | 支持大规模API请求的批处理执行 |
-| 🔄 **多API配置** | 管理多个AI API配置，支持不同模型和参数 |
-| ⚡ **并发控制** | 可配置并发数，提升处理效率 |
-| 🔄 **智能重试** | 失败请求自动重试机制 |
-| 📊 **实时监控** | Web界面实时显示处理进度和状态 |
-| 📈 **性能统计** | 响应时间、成本分析、请求图表等统计 |
-| 💾 **数据导出** | 支持结果导出为JSON格式 |
-| 🐞 **错误日志** | 详细的错误记录和分析 |
+- 🚀 **批处理管理**：支持大规模API请求的批处理执行
+- 🔄 **多API配置**：管理多个AI API配置，支持不同模型和参数
+- ⚡ **并发控制**：可配置并发数，提升处理效率
+- 🔄 **智能重试**：失败请求自动重试机制
+- 📊 **实时监控**：Web界面实时显示处理进度和状态
+- 📈 **性能统计**：响应时间、成本分析、请求图表等统计
+- 💾 **数据导出**：支持结果导出为JSON格式
+- 🐞 **错误日志**：详细的错误记录和分析
 
 ## 🖼️ 界面预览
 
@@ -254,5 +252,9 @@ rm batch_processor.db
 [![AGPL-3.0 License](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 本项目采用 **GNU Affero General Public License v3.0** 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=IrisMagicBox/simple-batch&type=Date)](https://www.star-history.com/#IrisMagicBox/simple-batch&Date)
 
 > ⚠️ **注意**：使用本工具时，请确保遵守相关AI API服务商的使用条款和限制。
